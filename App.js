@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Importing Native components for proper functioning of the app
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
+// Importing app screens
+import Main from './app/screens/Main'
+import Blitz from './app/screens/Blitz'
+import Clonagem from './app/screens/Clonagem'
+
+// Simplified paging
+const Stack = createStackNavigator();
+
+// Defining which pages will exist in the app, the first one being the first the user sees, options: hide page's title
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+        <Stack.Screen name="Blitz" component={Blitz} options={{ headerShown: false }} />
+        <Stack.Screen name="Clonagem" component={Clonagem} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
